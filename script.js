@@ -4,7 +4,9 @@ const { createApp } = Vue;
 // Importo l endpoint
 const endpoint = "https://flynn.boolean.careers/exercises/api/random/mail";
 const app = createApp({
-  data: () => ({}),
+  data: () => ({
+    email: [],
+  }),
 });
 
 app.mount("#root");
