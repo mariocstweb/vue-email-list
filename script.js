@@ -7,14 +7,19 @@ const app = createApp({
   data: () => ({
     emails: [],
   }),
+  methods: {
+    fetchEmails() {
+      // Utilizzo un ciclo for per ripetere l operazione tot volte
+      for (let i = 0; i < 10; i++) {
+        axios.get(endpoint).then((res) => {
+          // Utilizzo il metodo push per "riempire" l'array vuoto emails con cioò che ottengo dalla chiamata ajax
+          this.emails.push(res.data.response);
+        });
+      }
+    },
+  },
   created() {
-    // Utilizzo un ciclo for per ripetere l operazione tot volte
-    for (let i = 0; i < 10; i++) {
-      axios.get(endpoint).then((res) => {
-        // Utilizzo il metodo push per "riempire" l'array vuoto emails con cioò che ottengo dalla chiamata ajax
-        this.emails.push(res.data.response);
-      });
-    }
+    this.fetchEmails();
   },
 });
 
